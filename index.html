@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Praxis Vibes Analytics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- Passwortabfrage: die Daten sind verschlüsselt und werden erst im Browser entschlüsselt -->
+<div class="gate" id="gate" hidden>
+  <form class="gate-card" id="gate-form">
+    <div class="brand-mark" aria-hidden="true">PV</div>
+    <h1>Praxis Vibes <span>Analytics</span></h1>
+    <p class="sub">Dieses Dashboard ist passwortgeschützt.</p>
+    <label for="pw">Passwort</label>
+    <input id="pw" name="pw" type="password" autocomplete="current-password" required>
+    <button type="submit" id="gate-btn">Öffnen</button>
+    <p class="gate-err" id="gate-err" role="alert"></p>
+  </form>
+</div>
+
+<div id="app" hidden>
+<header class="top">
+  <div class="brand">
+    <div class="brand-mark" aria-hidden="true">PV</div>
+    <div>
+      <h1>Praxis Vibes <span>Analytics</span></h1>
+      <div class="sub" id="stand">–</div>
+    </div>
+  </div>
+  <div class="top-right">
+    <div class="seg" role="group" aria-label="Zeitraum" id="range"></div>
+  </div>
+</header>
+
+<main>
+  <!-- 1 · Absolute Reichweite -->
+  <section aria-labelledby="h-abs">
+    <div class="sec-head">
+      <h2 id="h-abs"><span class="num">01</span> Absolute Reichweite</h2>
+      <span class="sec-note" id="range-note"></span>
+    </div>
+    <div class="abs">
+      <div class="card hero" id="hero"></div>
+      <div class="card split" id="split"></div>
+      <div class="card community" id="community"></div>
+    </div>
+    <figure class="card chart" id="c-abs"><figcaption>Reichweite je Woche <span class="legend" id="lg-abs"></span></figcaption><div class="plot"></div></figure>
+  </section>
+
+  <!-- 2 · Podcast -->
+  <section aria-labelledby="h-pod">
+    <div class="sec-head">
+      <h2 id="h-pod"><span class="num pod">02</span> Podcast · Spotify for Creators</h2>
+      <span class="sec-note">Wiedergaben aller Plattformen</span>
+    </div>
+    <div class="tiles" id="pod-tiles"></div>
+    <div class="grid2 wide-left">
+      <figure class="card chart" id="c-plays"><figcaption>Wiedergaben je Woche <small>Raute = neue Folge</small></figcaption><div class="plot"></div></figure>
+      <div class="card">
+        <h3 class="card-h">Folgen im Zeitraum</h3>
+        <div class="eps-wrap"><table class="eps" id="eps"><thead><tr><th>#</th><th>Folge</th><th>Datum</th><th class="r">Wiedergaben</th></tr></thead><tbody></tbody></table></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · Instagram -->
+  <section aria-labelledby="h-ig">
+    <div class="sec-head">
+      <h2 id="h-ig"><span class="num ig">03</span> Instagram · @praxis.vibes</h2>
+      <span class="sec-note">Erreichte Konten, Views und Follower</span>
+    </div>
+    <div class="tiles" id="ig-tiles"></div>
+    <div class="grid2">
+      <figure class="card chart" id="c-reach"><figcaption>Erreichte Konten je Woche</figcaption><div class="plot"></div></figure>
+      <figure class="card chart" id="c-igf"><figcaption>Follower gesamt</figcaption><div class="plot"></div></figure>
+    </div>
+  </section>
+
+  <section class="grid2 wide-left">
+    <div class="card">
+      <h3 class="card-h">Was auffällt <small>letzte 14 Tage</small></h3>
+      <ul class="hints" id="hints"></ul>
+    </div>
+    <div class="card">
+      <h3 class="card-h">Datenstand</h3>
+      <ul class="status" id="status"></ul>
+    </div>
+  </section>
+
+  <section>
+    <details class="card">
+      <summary><h3 class="card-h inline">Alle Wochenwerte als Tabelle</h3></summary>
+      <div class="tbl-wrap"><table class="weeks" id="weeks"></table></div>
+    </details>
+  </section>
+</main>
+<footer>Automatisch aktualisiert jeden Montag · Quellen: Spotify for Creators, Instagram, RSS-Feed des Podcasts, Historie aus dem KPI-Tracking</footer>
+</div>
+<div class="tip" id="tip" role="status" aria-live="polite"></div>
+<script src="data.enc.js"></script>
+<script src="app.js"></script>
+<script src="gate.js"></script>
+</body>
+</html>
